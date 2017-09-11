@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+	<context:annotation-config />
+	<!-- 定时任务注解扫面驱动 -->
+	<!-- <task:annotation-driven />
+	<bean id="cacheTask" class="com.phkj.system.task.CacheTask"></bean>
+	<task:scheduled-tasks>
+		<task:scheduled ref="cacheTask" method="flushCodeCache" cron="0 0 3 * * *"/>
+	</task:scheduled-tasks>
+	<context:component-scan base-package="com.phkj.**.task" />  -->
+	<!-- 加载配置属性文件 -->
+	<context:property-placeholder
+		ignore-unresolvable="true" location="classpath*:/config/**/*.properties" />
+	<!-- 国际化支持 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>config.msg.msg-global</value>
+				<value>config.msg.msg-demo</value>
+			</list>
+		</property>
+	</bean>
+	<!-- <bean id="userServiceImpl" class="com.wucl.ssm.service.impl.UserServiceImpl"/> -->
+	<context:component-scan base-package="com.wucl.ssm">
+		<context:exclude-filter type="regex" expression="com.wucl.ssm.controller"/>
+	</context:component-scan>
+	
+	<!-- 国际化配置 -->
+	<!-- <bean class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
+
+	<context:component-scan base-package="com.phkj.**.service.**.impl,com.phkj.**.*Service.**.impl,com.phkj.util">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+	<context:component-scan base-package="com.phkj.**.dao">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Repository" />
+	</context:component-scan> -->
+
+	<!-- 缓存 -->
+	<!-- <bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:/config/cache/ehcache-local.xml"></property>
+		<property name="cacheManagerName" value="cacheManager"/>
+	</bean>
+	<bean id="codeCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+
+      <property name="cacheName" value="codeCache"/>
+
+      <property name="cacheManager" ref="cacheManager"/>
+
+   </bean>
+	<bean id="cacheListener" class="com.phkj.system.util.CacheListener">
+		<property name="codeCache" ref="codeCache"></property>
+	</bean>
+	<bean id="sysCodeService" class="com.phkj.system.service.impl.SysCodeServiceImpl"></bean>
+	<bean class="com.phkj.frame.spring.SpringHolder" lazy-init="false" /> -->
+	<!-- 读取properties文件 -->
+	<!-- <bean id="propertyConfigurer"
+		class="com.phkj.frame.constants.CustomizedPropertyUtil">
+		<property name="ignoreResourceNotFound" value="true"></property>
+		<property name="locations">
+			<list>
+				<value>classpath:/config/env/constant.properties</value>
+			</list>
+		</property>
+	</bean> -->
+</beans>
