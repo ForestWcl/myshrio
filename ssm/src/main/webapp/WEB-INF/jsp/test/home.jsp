@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js " type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.12.4.js"></script>
+<link href="${pageContext.request.contextPath }/css/login.css" rel="StyleSheet" type="text/css">
 <title>Insert title here</title>
 </head>
 <body>
+	<img src="${pageContext.request.contextPath }/ss/image/qq.png">
 <h2>HOME</h2>
 	<div>
-		<button>go</button>
+		填入参数：<input type="text" id="in">
+		<button>测试AJAX请求</button>
 	</div>
 	<table>
 		<tr>
@@ -26,9 +29,14 @@
 <script type="text/javascript">
 		$(function(){
 			$("button").click(function(){
+				var para = $("#in").val();
+				if(para!='1'&& para!='2'){
+					alert("只能填入1或2")
+					return ;
+				}
 				$.post("/ssm/user/getUser",
 						{
-						id:"1",
+						id:$("#in").val(),
 						},
 						function(data){
 							var p = data.info.data[0];

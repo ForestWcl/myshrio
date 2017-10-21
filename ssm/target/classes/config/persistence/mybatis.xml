@@ -16,7 +16,7 @@
 		<!-- 配置mybatis的配置文件 -->
 		<property name="configLocation" value="classpath:/config/persistence/mybatis-config.xml"/>
 	</bean>
-	<!-- 扫描basePackage下所有以@MyBatisRepository注解的接口 -->
+	<!-- 扫描basePackage下所有以@Repository注解的接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.wucl.ssm.mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
