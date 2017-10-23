@@ -9,7 +9,7 @@
 	<display-name>web</display-name>
 	<welcome-file-list>
 		<!-- <welcome-file>/WEB-INF/views-zui/login.jsp</welcome-file> -->
-		<welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
+		<welcome-file>/WEB-INF/jsp/login.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- <error-page> <exception-type>java.lang.Throwable</exception-type> <location>/WEB-INF/view-system/error/myException.jsp</location> 
 		</error-page> -->

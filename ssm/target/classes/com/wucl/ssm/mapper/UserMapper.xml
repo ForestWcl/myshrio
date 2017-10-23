@@ -6,4 +6,8 @@
   	<select id="getUserById" parameterType="java.lang.Integer" resultType="com.wucl.ssm.vo.User">
   		select * from user_t where id=#{id}
   	</select>
+  	
+  	<select id="loginCheck" parameterType="java.lang.String" resultType="com.wucl.ssm.vo.User">
+  		select * from user_t where user_name = #{userName}
+  	</select>
   </mapper>

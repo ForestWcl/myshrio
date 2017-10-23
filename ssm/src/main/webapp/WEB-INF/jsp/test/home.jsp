@@ -4,11 +4,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.12.4.js"></script>
-<link href="${pageContext.request.contextPath }/css/login.css" rel="StyleSheet" type="text/css">
 <title>Insert title here</title>
 </head>
 <body>
-	<img src="${pageContext.request.contextPath }/ss/image/qq.png">
+	<img src="${pageContext.request.contextPath }/image/qq.png">
 <h2>HOME</h2>
 	<div>
 		填入参数：<input type="text" id="in">

@@ -21,4 +21,13 @@ public class UserServiceImpl implements IUserService {
 		return user;
 	}
 
+	@Override
+	public User loginCheck(User user) {
+		User u = userMapper.loginCheck(user.getUserName());
+		if(u==null||!user.getPassWord().equals(u.getPassWord())){
+			return null;
+		}
+		return u;
+	}
+
 }
