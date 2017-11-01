@@ -30,8 +30,8 @@ public class UserController {
 	
 	@RequestMapping(value="getUser",method=RequestMethod.POST,produces="application/json; charset=utf-8")
 	@ResponseBody
-	public String getUser(int id,HttpServletResponse res){
-		User user = userServiceImpl.getUserById(id);
+	public String getUser(String userName,HttpServletResponse res){
+		User user = userServiceImpl.getUserById(userName);
 		List<User> li = new ArrayList<>();
 		li.add(user);
 		ResponseInfo ri = new ResponseInfo(li);

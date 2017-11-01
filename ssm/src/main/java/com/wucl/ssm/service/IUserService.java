@@ -4,11 +4,11 @@ import com.wucl.ssm.vo.User;
 
 public interface IUserService {
 
-	public User getUserById(int id);
+	public User getUserById(String username);
 	/**
 	 * 根据用户名查询用户是否存在
-	 * @param user
+	 * @param principal
 	 * @return	user
 	 */
-	public User loginCheck(User user);
+	public User loginCheck(String principal);
 }

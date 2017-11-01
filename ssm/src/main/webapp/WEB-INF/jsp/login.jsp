@@ -14,9 +14,9 @@
 		<div class="container">
 			<h1>Welcome</h1>
 			
-			<form class="form" action="${pageContext.request.contextPath }/sys/loginCheck" method="POST">
-				<input type="text" placeholder="Username" name="userName">
-				<input type="password" placeholder="Password" name="passWord">
+			<form class="form" action="${pageContext.request.contextPath }/shiro/dologin" method="POST">
+				<input type="text" placeholder="Username" name="username">
+				<input type="password" placeholder="Password" name="password">
 				<button type="submit" id="login-button">Login</button>
 				<div>
 				 <label style="color:red;font-family: 微软雅黑;font-size:small;">${ msg }</label>

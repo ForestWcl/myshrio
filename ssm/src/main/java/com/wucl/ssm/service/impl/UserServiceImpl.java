@@ -2,7 +2,7 @@ package com.wucl.ssm.service.impl;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Service;
 
 import com.wucl.ssm.mapper.UserMapper;
@@ -16,17 +16,15 @@ public class UserServiceImpl implements IUserService {
 	private UserMapper userMapper;
 	
 	@Override
-	public User getUserById(int id) {
+	@RequiresRoles(value = { "admin" })
+	public User getUserById(String id) {
 		User user = userMapper.getUserById(id);
 		return user;
 	}
 
 	@Override
-	public User loginCheck(User user) {
-		User u = userMapper.loginCheck(user.getUserName());
-		if(u==null||!user.getPassWord().equals(u.getPassWord())){
-			return null;
-		}
+	public User loginCheck(String username) {
+		User u = userMapper.loginCheck(username);
 		return u;
 	}
 

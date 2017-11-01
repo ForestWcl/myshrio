@@ -8,7 +8,7 @@ import com.wucl.ssm.vo.User;
 @Repository
 public interface UserMapper {
 
-	public User getUserById(@Param("id") int id);
+	public User getUserById(@Param("id") String id);
 	
 	/**
 	 * 根据用户id查询用户

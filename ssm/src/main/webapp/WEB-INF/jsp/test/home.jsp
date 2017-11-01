@@ -33,7 +33,7 @@
 					alert("只能填入1或2")
 					return ;
 				}
-				$.post("/ssm/user/getUser",
+				$.post("${pageContext.request.contextPath}/shiro/getInfo",
 						{
 						id:$("#in").val(),
 						},

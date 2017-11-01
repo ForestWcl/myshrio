@@ -25,7 +25,7 @@ public class SysController {
 	
 	@RequestMapping("/loginCheck")
 	public String loginHandler(User user,Map<String,Object> model){
-		User u = UserServiceImpl.loginCheck(user);
+		User u = UserServiceImpl.loginCheck(user.getUserName());
 		String msg ="";
 		if(u==null){
 			msg="用户名和密码不正确！";

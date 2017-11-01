@@ -6,7 +6,9 @@
 <body>
 <h2>new project</h2>
 
-<a href="${pageContext.request.contextPath}/user">测试</a>
+<a href="${pageContext.request.contextPath }/shiro/home">Home</a>
+<br><br>
+<a href="${pageContext.request.contextPath }/shiro/logout">退出</a>
 </body>
 	
 </html>

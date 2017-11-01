@@ -20,7 +20,7 @@ public class UserTest {
 			Log4jConfigurer.initLogging("classpath:config/env/log4j.properties");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			System.out.println("log4j ÎÄ¼þ²»´æÔÚ");
+			System.out.println("log4j ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		}
 	}
 	
@@ -38,7 +38,7 @@ public class UserTest {
 	
 	@Test
 	public void testGetUserById(){
-		User user = userServiceImpl.getUserById(1);
+		User user = userServiceImpl.getUserById("1");
 		System.out.println(user);
 	}
 }

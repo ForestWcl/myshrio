@@ -7,10 +7,10 @@
 
 
 	<display-name>web</display-name>
-	<welcome-file-list>
-		<!-- <welcome-file>/WEB-INF/views-zui/login.jsp</welcome-file> -->
-		<welcome-file>/WEB-INF/jsp/login.jsp</welcome-file>
-	</welcome-file-list>
+	<!-- <welcome-file-list>
+		<welcome-file>/WEB-INF/views-zui/login.jsp</welcome-file>
+		<welcome-file>/shiro/login</welcome-file>
+	</welcome-file-list> -->
 	<!-- <error-page> <exception-type>java.lang.Throwable</exception-type> <location>/WEB-INF/view-system/error/myException.jsp</location> 
 		</error-page> -->
 	<error-page>
@@ -24,6 +24,10 @@
 	<error-page>
 		<error-code>500</error-code>
 		<location>/error/500</location>
+	</error-page>
+	<error-page>
+		<error-code>401</error-code>
+		<location>/error/401</location>
 	</error-page>
 
 	<context-param>
@@ -83,14 +87,14 @@
 	</servlet-mapping>
 
 	<!-- 随机验证码 -->
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>ValidateCodeServlet</servlet-name>
 		<servlet-class>com.phkj.frame.servlet.ValidateCodeServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ValidateCodeServlet</servlet-name>
 		<url-pattern>/randomImage</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 
 
 	<!-- 编码过滤器 -->
@@ -111,20 +115,19 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<!-- shiro拦截器 -->
-	<!-- <filter>
-		<filter-name>shiroFilter</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-		<init-param>
-			该值缺省为false，表示声明周期由SpringApplicationContext管理，设置为true表示ServletContainer管理
-			<param-name>targetFilterLifecycle</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>shiroFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
+ <!-- Shiro Filter -->  
+    <filter>  
+        <filter-name>shiroFilter</filter-name>  
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
+        <init-param>  
+            <param-name>targetFilterLifecycle</param-name>  
+            <param-value>true</param-value>  
+        </init-param>  
+    </filter>  
+    <filter-mapping>  
+        <filter-name>shiroFilter</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping>  
 
 	<!-- <filter>
 		<filter-name>sessionFilter</filter-name>
@@ -147,10 +150,10 @@
 			<url-pattern>*.jsp</url-pattern>
 			<el-ignored>false</el-ignored>
 		</jsp-property-group>
-	</jsp-config> -->
+	</jsp-config> 
 
 	<session-config>
 		<session-timeout>30</session-timeout>
-	</session-config>
+	</session-config> -->
 
 </web-app>
