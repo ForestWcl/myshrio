@@ -81,7 +81,7 @@
 		<property name="resolveLazily" value="true" />
 	</bean>
 
-	<aop:config proxy-target-class="true"></aop:config>
+	<aop:config proxy-target-class="true"/> 
 
 	<!-- <bean
 		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
