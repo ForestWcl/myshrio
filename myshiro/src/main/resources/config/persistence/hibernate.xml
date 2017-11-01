@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="gb2312"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd  
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<!-- hibernate的SessionFactory配置,应用需要修改的配置如下： a. hibernate的mapping文件的放置的位置，需要在mappingDirectoryLocations的配置项中加入应用的mapping的路径 
+		b. hibernate.dialect数据库方言，按照上面的注释修改相应的数据库的方言实现 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="packagesToScan" value="com.phkj" />
+		<property name="hibernateProperties">
+			<props>
+				<!--针对某一具体数据库，可采用具体方言 -->
+				<!--常见的Dialect有：
+					MySQL: 	org.hibernate.dialect.MySQL5Dialect(5.0以上版本);
+							org.hibernate.dialect.MySQLDialect(5.0以下版本) 
+					SQLServer: 
+							org.hibernate.dialect.SQLServerDialect 
+					Sybase：org.hibernate.dialect.SybaseDialect 
+					Informix：org.hibernate.dialect.InformixDialect 
+					Oracle：	org.hibernate.dialect.OracleDialect(10及以上版本)，
+							org.hibernate.dialect.Oracle9Dialect（9.0及以下版本） 
+					DB2：org.hibernate.dialect.DB2Dialect -->
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- <prop key="hibernate.record_filter">${security.filter.record}</prop> -->
+				<prop key="hibernate.jdbc.fetch_size">10</prop>
+				<prop key="hibernate.jdbc.batch_size">30</prop>
+				<!-- enable the query cache -->
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</prop>
+			</props>
+		</property>
+		<property name="useTransactionAwareDataSource" value="true"></property>
+		<property name="namingStrategy">
+			<bean class="org.hibernate.cfg.ImprovedNamingStrategy"/> 
+		</property>
+	</bean>
+	
+</beans>
+
